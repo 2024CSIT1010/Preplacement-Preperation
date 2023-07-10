@@ -1,0 +1,40 @@
+Normal BST to Balanced BST
+
+
+
+
+
+
+
+void inorder(Node* root ,vector<int>&v)
+{
+    if(root==NULL)
+    {
+        return;
+    }
+    inorder(root->left,v);
+    v.push_back(root->data);
+    inorder(root->right,v);
+}
+Node* f(vector<int>&v,int i,int j)
+{ if(i>j)
+  {
+     return NULL;  
+  }
+  int mid=(i+j)/2;
+  Node*t=new Node(v[mid]);
+  t->left=f(v,i,mid-1);
+  t->right=f(v,mid+1,j);
+  return t;
+    
+    
+}
+Node* buildBalancedTree(Node* root)
+{
+	vector<int>v;
+	inorder(root,v);
+	int n=v.size();
+	int i=0;
+	int j=n-1;
+	return f(v,i,j);
+}
