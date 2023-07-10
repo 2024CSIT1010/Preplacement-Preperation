@@ -1,0 +1,31 @@
+Populate Inorder Successor for all nodes
+
+
+
+
+class Solution
+{
+public:
+  void f(Node*root,Node* &prev)
+  {
+      if(root==NULL)
+      {
+        return;   
+      }
+      
+      f(root->left,prev);
+      if(prev!=NULL)
+      {
+          prev->next=root;
+      }
+      prev=root;
+      f(root->right,prev);
+      
+      
+  }
+    void populateNext(Node *root)
+    {
+        Node* prev=NULL;
+        f(root,prev);
+    }
+};
