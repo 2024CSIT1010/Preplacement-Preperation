@@ -1,0 +1,49 @@
+Predecessor and Successor
+
+
+
+
+
+
+
+
+class Solution
+{
+    public:
+    void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
+    {     
+              Node*t=root;
+         
+         while(t!=NULL)
+         {
+             if(t->key>key)
+             {
+                 suc=t;
+                 t=t->left;
+             }
+             else
+             {
+                 t=t->right;
+             }
+         }
+         Node* m=root;
+         while(m!=NULL)
+         {
+             if(m->key<key)
+             {
+                 pre=m;
+                 m=m->right;
+             }
+             else
+             {
+                 m=m->left;
+             }
+         }
+
+    }
+
+
+
+
+
+
