@@ -1,0 +1,30 @@
+Permutation Of a string
+
+
+
+
+void solve(set<string>&st,string S,int index)
+	{
+	    if(index>=S.size())
+	    {
+	        st.insert(S);
+	        return;
+	    }
+	    for(int i=index;i<S.size();i++)
+	    {
+	        swap(S[index],S[i]);
+	        solve(st,S,index+1);
+	        swap(S[index],S[i]);
+	    }
+	}
+
+	
+		vector<string>find_permutation(string S)
+		{
+		        set<string>st;
+		   
+		    solve(st,S,0);
+		    vector<string>ans(st.begin(),st.end());
+		    return ans;
+
+		}
