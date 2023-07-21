@@ -1,0 +1,90 @@
+	Sort a stack using recursion
+
+
+
+
+
+
+
+
+
+
+
+	//{ Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
+
+class SortedStack{
+public:
+	stack<int> s;
+	void sort();
+};
+
+void printStack(stack<int> s)
+{
+    while (!s.empty())
+    {
+        printf("%d ", s.top());
+       	s.pop();
+    }
+    printf("\n");
+}
+
+int main()
+{
+int t;
+cin>>t;
+while(t--)
+{
+	SortedStack *ss = new SortedStack();
+	int n;
+	cin>>n;
+	for(int i=0;i<n;i++)
+	{
+	int k;
+	cin>>k;
+	ss->s.push(k);
+	}
+	ss->sort();
+	printStack(ss->s);
+}
+}
+// } Driver Code Ends
+
+
+/*The structure of the class is
+class SortedStack{
+public:
+	stack<int> s;
+	void sort();
+};
+*/
+
+/* The below method sorts the stack s 
+you are required to complete the below method */
+void insert(stack<int>&st,int d)
+{
+    if(st.empty() || st.top()<d)
+    {
+        st.push(d);
+        return;
+    }
+    int x=st.top();
+    st.pop();
+    insert(st,d);
+    st.push(x);
+}
+    void Reverse(stack<int> &St){
+        if(St.empty())
+        {
+            return;
+        }
+        int d=St.top();
+         St.pop();
+        Reverse(St);
+        insert(St,d);
+    }
+void SortedStack :: sort()
+{
+   Reverse(s);
+}
